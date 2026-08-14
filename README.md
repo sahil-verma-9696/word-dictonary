@@ -129,7 +129,7 @@ http://localhost:3000
 
 ---
 
-# 3. How to Test
+# How to Test
 
 The API can be tested using Postman, curl, or another HTTP client.
 
@@ -144,18 +144,18 @@ curl -X POST http://localhost:3000/words \
 ### Search a word
 
 ```bash
-curl "http://localhost:3000/search?q=apple"
+curl "http://localhost:3000/words?q=apple"
 ```
 
 ### Get suggestions
 
 ```bash
-curl "http://localhost:3000/suggest?q=app&k=3"
+curl "http://localhost:3000/words?q=app&k=3"
 ```
 
 ---
 
-# 4. Storage
+# Storage
 
 The system uses:
 
@@ -190,7 +190,7 @@ The application loads existing data from the JSON file when it starts.
 
 ---
 
-# 5. Technical Assumptions and Details
+# Technical Assumptions and Details
 
 ## In-Memory Dictionary
 
@@ -212,7 +212,7 @@ apple
 ```
 ---
 
-# 12. Complexity
+# Complexity
 
 Let:
 
@@ -270,7 +270,7 @@ For extremely large dictionaries, a `Trie` specialized prefix data structure cou
 
 ---
 
-# 13. Design Summary
+# Design Summary
 
 ```text
 Routes
