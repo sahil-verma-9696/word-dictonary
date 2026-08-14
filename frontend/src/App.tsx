@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
@@ -8,9 +8,9 @@ function App() {
   // Add Word
   // -----------------------------
 
-  const [word, setWord] = useState("");
-  const [addResult, setAddResult] = useState(null);
-  const [addError, setAddError] = useState(null);
+  const [word, setWord] = useState<string>("");
+  const [addResult, setAddResult] = useState<string | null>(null);
+  const [addError, setAddError] = useState<string | null>(null);
 
 
   // -----------------------------
@@ -18,8 +18,8 @@ function App() {
   // -----------------------------
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResult, setSearchResult] = useState(null);
-  const [searchError, setSearchError] = useState(null);
+  const [searchResult, setSearchResult] = useState<string | null>(null);
+  const [searchError, setSearchError] = useState<string | null>(null);
 
 
   // -----------------------------
@@ -28,8 +28,8 @@ function App() {
 
   const [prefix, setPrefix] = useState("");
   const [k, setK] = useState(5);
-  const [suggestions, setSuggestions] = useState([]);
-  const [suggestError, setSuggestError] = useState(null);
+  const [suggestions, setSuggestions] = useState<string[] | null>([]);
+  const [suggestError, setSuggestError] = useState<string | null>(null);
 
 
   // -----------------------------
@@ -67,8 +67,13 @@ function App() {
 
       setAddResult(payload);
 
-    } catch (error) {
-      setAddError(error.message);
+    } catch (error: unknown) {
+
+      if (error instanceof Error) {
+        setAddError(error.message);
+      } else {
+        setAddError("Something went wrong");
+      }
     }
   };
 
@@ -102,8 +107,9 @@ function App() {
 
       setSearchResult(payload);
 
-    } catch (error) {
-      setSearchError(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        setSearchError(error.message);
     }
   };
 
@@ -137,7 +143,8 @@ function App() {
 
       setSuggestions(payload || []);
 
-    } catch (error) {
+    } catch (error: unknown) {
+      if(error instanceof Error)
       setSuggestError(error.message);
     }
   };
@@ -240,7 +247,7 @@ function App() {
           Get Suggestions
         </button>
 
-        {suggestions.length > 0 && (
+        {suggestions && suggestions.length > 0 && (
           <ul>
             {suggestions.map((suggestion) => (
               <li key={suggestion}>
@@ -250,7 +257,7 @@ function App() {
           </ul>
         )}
 
-        {suggestions.length === 0 && !suggestError && prefix && (
+        {suggestions && suggestions.length === 0 && !suggestError && prefix && (
           <p>No suggestions found.</p>
         )}
 
