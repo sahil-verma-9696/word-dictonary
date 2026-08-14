@@ -51,7 +51,7 @@ Response:
 ## Exact Search
 
 ```http
-GET /search?q=apple
+GET /words?q=apple
 ```
 
 Response:
@@ -75,7 +75,7 @@ or:
 ## Prefix Suggestion
 
 ```http
-GET /suggest?q=app&k=3
+GET /words?q=app&k=3
 ```
 
 Response:
