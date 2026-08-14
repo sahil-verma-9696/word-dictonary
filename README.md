@@ -10,7 +10,7 @@
 `Backend`
 [https://word-dictonary.onrender.com](https://word-dictonary.onrender.com)
 
-# 1. Data Structures Used
+# Data Structures Used
 
 ## JavaScript `Map`
 
@@ -21,7 +21,7 @@ const dictionary = new Map();
 ```
 ---
 
-# 2. API Endpoints
+# API Endpoints
 
 ## Add Word
 
