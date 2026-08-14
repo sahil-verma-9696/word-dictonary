@@ -178,7 +178,7 @@ project/
 │   ├── service.js
 │   │
 │   └── db/
-│       ├── dictionaryRepository.js
+│       ├── repository.js
 │       └── fileStorage.js
 │       ├── resource/
 |           └── localdb.json
