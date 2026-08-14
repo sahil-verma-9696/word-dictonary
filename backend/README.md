@@ -1,6 +1,10 @@
 # Dictionary Search & Auto-Suggestion System
 ---
 
+# Live link
+
+[https://word-dictonary.onrender.com](https://word-dictonary.onrender.com)
+
 # 1. Data Structures Used
 
 ## JavaScript `Map`
